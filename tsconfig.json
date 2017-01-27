@@ -6,14 +6,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "removeComments": true,
-    "sourceMap": true,
-    "types": [
-      "core-js",
-      "hammerjs",
-      "node"
-    ]
+    "sourceMap": true
   },
-  "filesGlob": [
-    "src/**/*.ts"
+  "exclude": [
+    "node_modules"
   ]
 }
