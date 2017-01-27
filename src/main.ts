@@ -1,29 +1,30 @@
-import 'core-js/es6';
-import 'core-js/es7';
-import 'zone.js';
-
-import {Component, NgModule} from '@angular/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {MaterialModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './components/app/app.component';
+import {RouterModule, Routes} from '@angular/router';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 
-@Component({
-  selector: 'xibo-app',
-  template: '<span>Test</span>'
-})
-export class AppComponent {}
+const xiboRoutes: Routes = [
+  { path: '', component: DashboardComponent }
+];
 
 @NgModule({
   imports: [
     BrowserModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(xiboRoutes),
+    MaterialModule.forRoot()
   ],
-  declarations: [AppComponent],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    DashboardComponent
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class XiboAppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule);
-
-
-
+/* Bootstrap the Angular module. */
+platformBrowserDynamic().bootstrapModule(XiboAppModule);
